@@ -83,7 +83,8 @@ class PCalendarDatePicker extends StatefulWidget {
     this.onDisplayedMonthChanged,
     this.initialCalendarMode = PDatePickerMode.day,
     this.selectableDayPredicate,
-  })  : assert(initialDate != null),
+  })
+      : assert(initialDate != null),
         assert(firstDate != null),
         assert(lastDate != null),
         initialDate = utils.dateOnly(initialDate),
@@ -93,15 +94,19 @@ class PCalendarDatePicker extends StatefulWidget {
         assert(initialCalendarMode != null),
         super(key: key) {
     assert(!this.lastDate.isBefore(this.firstDate),
-        'lastDate ${this.lastDate} must be on or after firstDate ${this.firstDate}.');
+    'lastDate ${this.lastDate} must be on or after firstDate ${this
+        .firstDate}.');
     assert(!this.initialDate.isBefore(this.firstDate),
-        'initialDate ${this.initialDate} must be on or after firstDate ${this.firstDate}.');
+    'initialDate ${this.initialDate} must be on or after firstDate ${this
+        .firstDate}.');
     assert(!this.initialDate.isAfter(this.lastDate),
-        'initialDate ${this.initialDate} must be on or before lastDate ${this.lastDate}.');
+    'initialDate ${this.initialDate} must be on or before lastDate ${this
+        .lastDate}.');
     assert(
-        selectableDayPredicate == null ||
-            selectableDayPredicate!(this.initialDate),
-        'Provided initialDate ${this.initialDate} must satisfy provided selectableDayPredicate.');
+    selectableDayPredicate == null ||
+        selectableDayPredicate!(this.initialDate),
+    'Provided initialDate ${this
+        .initialDate} must satisfy provided selectableDayPredicate.');
   }
 
   /// The initially selected [Jalali] that the picker should display.
@@ -163,7 +168,9 @@ class _CalendarDatePickerState extends State<PCalendarDatePicker> {
   }
 
   void _vibrate() {
-    switch (Theme.of(context).platform) {
+    switch (Theme
+        .of(context)
+        .platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
@@ -274,7 +281,7 @@ class _CalendarDatePickerState extends State<PCalendarDatePicker> {
         // Put the mode toggle button on top so that it won't be covered up by the _MonthPicker
         _DatePickerModeToggleButton(
           mode: _mode,
-          title: formatMonthYear(_currentDisplayedMonthDate!),
+          title: '${_currentDisplayedMonthDate!.formatter.yyyy}',
           onTitlePressed: () {
             // Toggle the day/year mode.
             _handleModeChanged(_mode == PDatePickerMode.day
@@ -344,8 +351,12 @@ class _DatePickerModeToggleButtonState
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme
+        .of(context)
+        .colorScheme;
+    final TextTheme textTheme = Theme
+        .of(context)
+        .textTheme;
     final Color controlColor = colorScheme.onSurface.withOpacity(0.60);
 
     return Container(
@@ -391,7 +402,7 @@ class _DatePickerModeToggleButtonState
             ),
           ),
           if (widget.mode == PDatePickerMode.day)
-            // Give space for the prev/next month buttons that are underneath this row
+          // Give space for the prev/next month buttons that are underneath this row
             const SizedBox(width: _monthNavButtonsWidth),
         ],
       ),
@@ -417,7 +428,8 @@ class _MonthPicker extends StatefulWidget {
     required this.onChanged,
     required this.onDisplayedMonthChanged,
     this.selectableDayPredicate,
-  })  : assert(selectedDate != null),
+  })
+      : assert(selectedDate != null),
         assert(currentDate != null),
         assert(onChanged != null),
         assert(firstDate != null),
@@ -496,7 +508,7 @@ class _MonthPickerState extends State<_MonthPicker> {
 
   void _handleMonthPageChanged(int monthPage) {
     final Jalali monthDate =
-        utils.addMonthsToMonthDate(widget.firstDate, monthPage);
+    utils.addMonthsToMonthDate(widget.firstDate, monthPage);
     if (_currentMonth!.year != monthDate.year ||
         _currentMonth!.month != monthDate.month) {
       _currentMonth = Jalali(monthDate.year, monthDate.month);
@@ -563,10 +575,14 @@ class _MonthPickerState extends State<_MonthPicker> {
   @override
   Widget build(BuildContext context) {
     final String previousTooltipText =
-        'ماه قبل ${_previousMonthDate.formatMonthYear()}';
-    final String nextTooltipText = 'ماه بعد ${_nextMonthDate.formatMonthYear}';
+        'ماه بعد ${_previousMonthDate.formatMonthYear()}';
+    final String nextTooltipText = 'ماه ثبل ${_nextMonthDate.formatMonthYear}';
     final Color controlColor =
-        Theme.of(context).colorScheme.onSurface.withOpacity(0.60);
+    Theme
+        .of(context)
+        .colorScheme
+        .onSurface
+        .withOpacity(0.60);
 
     return Semantics(
       child: Column(
@@ -577,19 +593,28 @@ class _MonthPickerState extends State<_MonthPicker> {
             child: Row(
               children: <Widget>[
                 const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.chevron_left),
-                  color: controlColor,
-                  tooltip: _isDisplayingFirstMonth ? null : previousTooltipText,
-                  onPressed:
-                      _isDisplayingFirstMonth ? null : _handlePreviousMonth,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.chevron_right),
-                  color: controlColor,
-                  tooltip: _isDisplayingLastMonth ? null : nextTooltipText,
-                  onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
-                ),
+                Container(child: Text(_currentMonth!.formatter.mN),
+                  margin: EdgeInsets.only(left: MediaQuery
+                      .of(context)
+                      .size
+                      .width * .04),),
+
+
+                TextButton(
+                  child: Text('ماه قبل', style: TextStyle(fontFamily: 'Vazir',
+                      fontSize: 11,
+                      color: Color.fromRGBO(70, 82, 141, 1)),),
+                  onPressed: _isDisplayingFirstMonth
+                      ? null
+                      : _handlePreviousMonth,),
+
+                TextButton(child: Text('ماه بغد', style: TextStyle(
+                    fontFamily: 'Vazir',
+                    fontSize: 11,
+                    color: Color.fromRGBO(70, 82, 141, 1)),),
+                  onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,),
+
+
               ],
             ),
           ),
@@ -599,7 +624,7 @@ class _MonthPickerState extends State<_MonthPicker> {
               controller: _pageController,
               itemBuilder: _buildItems,
               itemCount:
-                  utils.monthDelta(widget.firstDate, widget.lastDate) + 1,
+              utils.monthDelta(widget.firstDate, widget.lastDate) + 1,
               scrollDirection: Axis.horizontal,
               onPageChanged: _handleMonthPageChanged,
             ),
@@ -625,7 +650,8 @@ class _DayPicker extends StatelessWidget {
     required this.selectedDate,
     required this.onChanged,
     this.selectableDayPredicate,
-  })  : assert(currentDate != null),
+  })
+      : assert(currentDate != null),
         assert(displayedMonth != null),
         assert(firstDate != null),
         assert(lastDate != null),
@@ -665,10 +691,14 @@ class _DayPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final ColorScheme colorScheme = Theme
+        .of(context)
+        .colorScheme;
     final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    MaterialLocalizations.of(context);
+    final TextTheme textTheme = Theme
+        .of(context)
+        .textTheme;
     final TextStyle? dayStyle = textTheme.caption;
     final Color enabledDayColor = colorScheme.onSurface.withOpacity(0.87);
     final Color disabledDayColor = colorScheme.onSurface.withOpacity(0.38);
@@ -724,7 +754,8 @@ class _DayPicker extends StatelessWidget {
           decoration: decoration,
           child: Center(
             child: Text(formatDecimal(day),
-                style: dayStyle!.apply(color: dayColor)),
+                style: dayStyle!.apply(color: dayColor).copyWith(
+                    fontFamily: 'Vazir')),
           ),
         );
 
@@ -815,14 +846,15 @@ class _DayHeaders extends StatelessWidget {
   /// _ _ _ _ 1 2 3
   /// 4 5 6 7 8 9 10
   /// ```
-  List<Widget> _getDayHeaders(
-      TextStyle? headerStyle, MaterialLocalizations localizations) {
+  List<Widget> _getDayHeaders(TextStyle? headerStyle,
+      MaterialLocalizations localizations) {
     final List<Widget> result = <Widget>[];
     int firstDayOfWeekIndex = 0;
     for (int i = firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       final String weekday = narrowWeekdays[i];
       result.add(ExcludeSemantics(
-        child: Center(child: Text(weekday, style: headerStyle)),
+        child: Center(child: Text(
+            weekday, style: headerStyle!.copyWith(fontFamily: 'Vazir'))),
       ));
       if (i == (firstDayOfWeekIndex - 1) % 7) break;
     }
@@ -837,7 +869,7 @@ class _DayHeaders extends StatelessWidget {
       color: colorScheme.onSurface.withOpacity(0.60),
     );
     final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
+    MaterialLocalizations.of(context);
     final List<Widget> labels = _getDayHeaders(dayHeaderStyle, localizations);
 
     return Padding(
@@ -870,7 +902,8 @@ class _YearPicker extends StatefulWidget {
     required this.initialDate,
     required this.selectedDate,
     required this.onChanged,
-  })  : assert(currentDate != null),
+  })
+      : assert(currentDate != null),
         assert(firstDate != null),
         assert(lastDate != null),
         assert(initialDate != null),
@@ -922,13 +955,17 @@ class _YearPickerState extends State<_YearPicker> {
     // Move the offset down by 2 rows to approximately center it.
     final int centeredYearRow = initialYearRow - 2;
     final double scrollOffset =
-        _itemCount < minYears ? 0 : centeredYearRow * _yearPickerRowHeight;
+    _itemCount < minYears ? 0 : centeredYearRow * _yearPickerRowHeight;
     scrollController = ScrollController(initialScrollOffset: scrollOffset);
   }
 
   Widget _buildYearItem(BuildContext context, int index) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme
+        .of(context)
+        .colorScheme;
+    final TextTheme textTheme = Theme
+        .of(context)
+        .textTheme;
 
     // Backfill the _YearPicker with disabled years if necessary.
     final int offset = _itemCount < minYears ? (minYears - _itemCount) ~/ 2 : 0;
@@ -978,7 +1015,8 @@ class _YearPickerState extends State<_YearPicker> {
         child: Center(
           child: Semantics(
             selected: isSelected,
-            child: Text(year.toString(), style: itemStyle),
+            child: Text(year.toString(),
+                style: itemStyle!.copyWith(fontFamily: 'Vazir')),
           ),
         ),
       ),
@@ -1037,7 +1075,7 @@ class _YearPickerGridDelegate extends SliverGridDelegate {
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
     final double tileWidth = (constraints.crossAxisExtent -
-            (_yearPickerColumnCount - 1) * _yearPickerRowSpacing) /
+        (_yearPickerColumnCount - 1) * _yearPickerRowSpacing) /
         _yearPickerColumnCount;
     return SliverGridRegularTileLayout(
       childCrossAxisExtent: tileWidth,
@@ -1054,4 +1092,4 @@ class _YearPickerGridDelegate extends SliverGridDelegate {
 }
 
 const _YearPickerGridDelegate _yearPickerGridDelegate =
-    _YearPickerGridDelegate();
+_YearPickerGridDelegate();

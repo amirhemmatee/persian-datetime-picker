@@ -37,7 +37,8 @@ class PDatePickerHeader extends StatelessWidget {
     required this.icon,
     required this.iconTooltip,
     required this.onIconPressed,
-  })  : assert(helpText != null),
+  })
+      : assert(helpText != null),
         assert(orientation != null),
         assert(isShort != null),
         super(key: key);
@@ -92,9 +93,9 @@ class PDatePickerHeader extends StatelessWidget {
     // The header should use the primary color in light themes and surface color in dark
     final bool isDark = colorScheme.brightness == Brightness.dark;
     final Color primarySurfaceColor =
-        isDark ? colorScheme.surface : colorScheme.primary;
+    isDark ? colorScheme.surface : colorScheme.primary;
     final Color onPrimarySurfaceColor =
-        isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+    isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final TextStyle? helpStyle = textTheme.overline?.copyWith(
       color: onPrimarySurfaceColor,
@@ -113,35 +114,38 @@ class PDatePickerHeader extends StatelessWidget {
       maxLines: (isShort || orientation == Orientation.portrait) ? 1 : 2,
       overflow: TextOverflow.ellipsis,
     );
-    final IconButton icon = IconButton(
-      icon: Icon(this.icon),
-      color: onPrimarySurfaceColor,
-      tooltip: iconTooltip,
-      onPressed: onIconPressed,
-    );
+    // final IconButton icon = IconButton(
+    //   icon: Icon(this.icon),
+    //   color: onPrimarySurfaceColor,
+    //   tooltip: iconTooltip,
+    //   onPressed: onIconPressed,
+    // );
 
     switch (orientation) {
       case Orientation.portrait:
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: _datePickerHeaderPortraitHeight,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * .12,
               color: primarySurfaceColor,
               padding: const EdgeInsetsDirectional.only(
                 start: 24,
                 end: 12,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(height: 16),
-                  Flexible(child: help),
-                  const SizedBox(height: 38),
+                  // SizedBox(height: MediaQuery.of(context).size.height*.01),
+                  // Flexible(child: help),
+                  //  SizedBox(height: MediaQuery.of(context).size.height*.02),
                   Row(
                     children: <Widget>[
                       Expanded(child: title),
-                      icon,
+                      //icon,
                     ],
                   ),
                 ],
@@ -174,12 +178,12 @@ class PDatePickerHeader extends StatelessWidget {
                     child: title,
                   ),
                   const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                    ),
-                    child: icon,
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //     horizontal: 4,
+                  //   ),
+                  //   child: icon,
+                  // ),
                 ],
               ),
             ),

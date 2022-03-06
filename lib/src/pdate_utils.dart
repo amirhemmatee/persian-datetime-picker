@@ -284,6 +284,11 @@ extension JalaliExt on Jalali {
     return '${shortDayName[this.weekDay - 1]} ${f.d} ${f.mN}';
   }
 
+  String formatHeaderText() {
+    final f = this.formatter;
+    return '${f.dd} ${f.mN} ${f.yyyy}';
+  }
+
   String formatFullDate() {
     final f = this.formatter;
     return '${f.wN} ${f.d} ${f.mN} ${f.yyyy}';
