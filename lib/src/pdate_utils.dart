@@ -311,7 +311,7 @@ extension JalaliExt on Jalali {
 
   String formatShortDate() {
     final f = this.formatter;
-    return '${f.dd} ${f.mN}  ${f.yyyy}';
+    return '${f.dd} ${f.mN} ${f.yyyy}';
   }
 
   String formatMonthYear() {
