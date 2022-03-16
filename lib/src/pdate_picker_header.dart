@@ -124,6 +124,7 @@ class PDatePickerHeader extends StatelessWidget {
       case Orientation.portrait:
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * .12,
@@ -132,20 +133,7 @@ class PDatePickerHeader extends StatelessWidget {
                 start: 24,
                 end: 12,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  // SizedBox(height: MediaQuery.of(context).size.height*.01),
-                  // Flexible(child: help),
-                  //  SizedBox(height: MediaQuery.of(context).size.height*.02),
-                  Row(
-                    children: <Widget>[
-                      Expanded(child: title),
-                      //icon,
-                    ],
-                  ),
-                ],
-              ),
+              child: Expanded(child: Center(child: title)),
             ),
           ],
         );
