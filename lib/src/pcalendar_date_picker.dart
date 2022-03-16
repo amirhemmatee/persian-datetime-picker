@@ -687,7 +687,7 @@ class _DayPicker extends StatelessWidget {
     final Color disabledDayColor = colorScheme.onSurface.withOpacity(0.38);
     final Color selectedDayColor = Colors.white;
     final Color selectedDayBackground = Color.fromRGBO(88, 104, 224, 1);
-    final Color todayColor = Color.fromRGBO(88, 104, 224, 1);
+    final Color todayColor = Colors.white;
 
     final int year = displayedMonth.year;
     final int month = displayedMonth.month;
