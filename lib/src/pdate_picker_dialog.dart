@@ -106,14 +106,14 @@ Future<Jalali?> showPersianDatePicker({
   initialDate = utils.dateOnly(initialDate);
   firstDate = utils.dateOnly(firstDate);
   lastDate = utils.dateOnly(lastDate);
-  assert(!lastDate.isBefore(
-      firstDate), 'lastDate $lastDate must be on or after firstDate $firstDate.');
-  assert(!initialDate.isBefore(
-      firstDate), 'initialDate $initialDate must be on or after firstDate $firstDate.');
-  assert(!initialDate.isAfter(
-      lastDate), 'initialDate $initialDate must be on or before lastDate $lastDate.');
+  assert(!lastDate.isBefore(firstDate),
+      'lastDate $lastDate must be on or after firstDate $firstDate.');
+  assert(!initialDate.isBefore(firstDate),
+      'initialDate $initialDate must be on or after firstDate $firstDate.');
+  assert(!initialDate.isAfter(lastDate),
+      'initialDate $initialDate must be on or before lastDate $lastDate.');
   assert(selectableDayPredicate == null || selectableDayPredicate(initialDate),
-  'Provided initialDate $initialDate must satisfy provided selectableDayPredicate.');
+      'Provided initialDate $initialDate must satisfy provided selectableDayPredicate.');
   assert(initialEntryMode != null);
   assert(useRootNavigator != null);
   assert(initialDatePickerMode != null);
@@ -176,8 +176,7 @@ class _DatePickerDialog extends StatefulWidget {
     this.errorInvalidText,
     this.fieldHintText,
     this.fieldLabelText,
-  })
-      : assert(initialDate != null),
+  })  : assert(initialDate != null),
         assert(firstDate != null),
         assert(lastDate != null),
         initialDate = utils.dateOnly(initialDate),
@@ -186,18 +185,16 @@ class _DatePickerDialog extends StatefulWidget {
         assert(initialEntryMode != null),
         assert(initialCalendarMode != null),
         super(key: key) {
-    assert(!this.lastDate.isBefore(this.firstDate), 'lastDate ${this
-        .lastDate} must be on or after firstDate ${this.firstDate}.');
+    assert(!this.lastDate.isBefore(this.firstDate),
+        'lastDate ${this.lastDate} must be on or after firstDate ${this.firstDate}.');
     assert(!this.initialDate.isBefore(this.firstDate),
-    'initialDate ${this.initialDate} must be on or after firstDate ${this
-        .firstDate}.');
+        'initialDate ${this.initialDate} must be on or after firstDate ${this.firstDate}.');
     assert(!this.initialDate.isAfter(this.lastDate),
-    'initialDate ${this.initialDate} must be on or before lastDate ${this
-        .lastDate}.');
-    assert(selectableDayPredicate == null ||
-        selectableDayPredicate!(this.initialDate),
-    'Provided initialDate ${this
-        .initialDate} must satisfy provided selectableDayPredicate');
+        'initialDate ${this.initialDate} must be on or before lastDate ${this.lastDate}.');
+    assert(
+        selectableDayPredicate == null ||
+            selectableDayPredicate!(this.initialDate),
+        'Provided initialDate ${this.initialDate} must satisfy provided selectableDayPredicate');
   }
 
   /// The initially selected [Jalali] that the picker should display.
@@ -293,9 +290,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
   }
 
   Size? _dialogSize(BuildContext context) {
-    final Orientation orientation = MediaQuery
-        .of(context)
-        .orientation;
+    final Orientation orientation = MediaQuery.of(context).orientation;
     switch (_entryMode) {
       case DatePickerEntryMode.calendar:
         switch (orientation) {
@@ -323,21 +318,18 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final MaterialLocalizations localizations = MaterialLocalizations.of(
-        context);
-    final Orientation orientation = MediaQuery
-        .of(context)
-        .orientation;
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
+    final Orientation orientation = MediaQuery.of(context).orientation;
     final TextTheme textTheme = theme.textTheme;
     // Constrain the textScaleFactor to the largest supported value to prevent
     // layout issues.
-    final double textScaleFactor = math.min(MediaQuery
-        .of(context)
-        .textScaleFactor, 1.3);
+    final double textScaleFactor =
+        math.min(MediaQuery.of(context).textScaleFactor, 1.3);
 
     final String dateText = _selectedDate != null
         ? _selectedDate!.formatHeaderText()
-    // TODO(darrenaustin): localize 'Date'
+        // TODO(darrenaustin): localize 'Date'
         : 'Date';
     final Color dateColor = colorScheme.brightness == Brightness.light
         ? colorScheme.onPrimary
@@ -352,13 +344,16 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
       children: <Widget>[
         FlatButton(
           child: Text(
-            widget.cancelText ?? "لغو", style: TextStyle(fontFamily: 'Vazir'),),
+            widget.cancelText ?? "لغو",
+            style: TextStyle(
+                fontFamily: 'Vazir', color: Color.fromRGBO(88, 104, 224, 1)),
+          ),
           onPressed: _handleCancel,
-
         ),
         FlatButton(
           child: Text(widget.confirmText ?? "تایید",
-              style: TextStyle(fontFamily: 'Vazir')),
+              style: TextStyle(
+                  fontFamily: 'Vazir', color: Color.fromRGBO(88, 104, 224, 1))),
           onPressed: _handleOk,
         ),
       ],
@@ -424,9 +419,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     );
 
     final Size dialogSize = _dialogSize(context)! * textScaleFactor;
-    final DialogTheme dialogTheme = Theme
-        .of(context)
-        .dialogTheme;
+    final DialogTheme dialogTheme = Theme.of(context).dialogTheme;
     return Dialog(
       child: Directionality(
         textDirection: TextDirection.rtl,
@@ -474,13 +467,14 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
           ),
         ),
       ),
-      insetPadding: const EdgeInsets.symmetric(
-          horizontal: 16.0, vertical: 24.0),
+      insetPadding:
+          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
       // The default dialog shape is radius 2 rounded rect, but the spec has
       // been updated to 4, so we will use that here for the Date Picker, but
       // only if there isn't one provided in the theme.
-      shape: dialogTheme.shape ?? const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4.0))),
+      shape: dialogTheme.shape ??
+          const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
       clipBehavior: Clip.antiAlias,
     );
   }

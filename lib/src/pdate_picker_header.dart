@@ -37,8 +37,7 @@ class PDatePickerHeader extends StatelessWidget {
     required this.icon,
     required this.iconTooltip,
     required this.onIconPressed,
-  })
-      : assert(helpText != null),
+  })  : assert(helpText != null),
         assert(orientation != null),
         assert(isShort != null),
         super(key: key);
@@ -93,9 +92,9 @@ class PDatePickerHeader extends StatelessWidget {
     // The header should use the primary color in light themes and surface color in dark
     final bool isDark = colorScheme.brightness == Brightness.dark;
     final Color primarySurfaceColor =
-    isDark ? colorScheme.surface : colorScheme.primary;
+        isDark ? colorScheme.surface : colorScheme.primary;
     final Color onPrimarySurfaceColor =
-    isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+        isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final TextStyle? helpStyle = textTheme.overline?.copyWith(
       color: onPrimarySurfaceColor,
@@ -127,11 +126,8 @@ class PDatePickerHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * .12,
-              color: primarySurfaceColor,
+              height: MediaQuery.of(context).size.height * .12,
+              color: Color.fromRGBO(88, 104, 224, 1),
               padding: const EdgeInsetsDirectional.only(
                 start: 24,
                 end: 12,
@@ -159,7 +155,7 @@ class PDatePickerHeader extends StatelessWidget {
           children: <Widget>[
             Container(
               width: _datePickerHeaderLandscapeWidth,
-              color: primarySurfaceColor,
+              color: Color.fromRGBO(88, 104, 224, 1),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
