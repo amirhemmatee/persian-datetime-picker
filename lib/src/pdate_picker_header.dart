@@ -126,14 +126,16 @@ class PDatePickerHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height * .12,
-              color: Color.fromRGBO(88, 104, 224, 1),
-              padding: const EdgeInsetsDirectional.only(
-                start: 24,
-                end: 12,
+            Expanded(
+              child: Container(
+                height: MediaQuery.of(context).size.height * .12,
+                color: Color.fromRGBO(88, 104, 224, 1),
+                padding: const EdgeInsetsDirectional.only(
+                  start: 24,
+                  end: 12,
+                ),
+                child: Center(child: title),
               ),
-              child: Expanded(child: Center(child: title)),
             ),
           ],
         );
