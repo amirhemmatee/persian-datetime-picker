@@ -15,8 +15,8 @@ import 'pinput_date_range_picker.dart';
 const Size _inputPortraitDialogSize = Size(330.0, 270.0);
 const Size _inputLandscapeDialogSize = Size(496, 164.0);
 const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
-const double _inputFormPortraitHeight = 98.0;
-const double _inputFormLandscapeHeight = 108.0;
+const double _inputFormPortraitHeight = 78.0;
+const double _inputFormLandscapeHeight = 98.0;
 
 /// Shows a full screen modal dialog containing a Material Design date range
 /// picker.
