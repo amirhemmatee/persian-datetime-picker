@@ -109,7 +109,7 @@ class PDatePickerHeader extends StatelessWidget {
     final Text title = Text(
       titleText,
       semanticsLabel: titleSemanticsLabel ?? titleText,
-      style: titleStyle?.copyWith(fontFamily: 'Vazir'),
+      style: titleStyle?.copyWith(fontFamily: 'Vazir', color: Colors.black),
       maxLines: (isShort || orientation == Orientation.portrait) ? 1 : 2,
       overflow: TextOverflow.ellipsis,
     );
