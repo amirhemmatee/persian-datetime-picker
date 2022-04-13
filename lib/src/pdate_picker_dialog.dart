@@ -426,7 +426,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         textDirection: TextDirection.rtl,
         child: AnimatedContainer(
           width: dialogSize.width,
-          height: MediaQuery.of(context).size.height * .3,
+          height: MediaQuery.of(context).size.height * .6,
           duration: _dialogSizeAnimationDuration,
           curve: Curves.easeIn,
           child: MediaQuery(
