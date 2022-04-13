@@ -336,9 +336,9 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         : colorScheme.onSurface;
     final TextStyle? dateStyle = orientation == Orientation.landscape
         ? textTheme.headline5
-            ?.copyWith(color: dateColor, fontFamily: 'Vazir', fontSize: 14)
+            ?.copyWith(color: dateColor, fontFamily: 'Vazir', fontSize: 15)
         : textTheme.headline4
-            ?.copyWith(color: dateColor, fontFamily: 'Vazir', fontSize: 14);
+            ?.copyWith(color: dateColor, fontFamily: 'Vazir', fontSize: 15);
 
     final Widget actions = ButtonBar(
       buttonTextTheme: ButtonTextTheme.primary,

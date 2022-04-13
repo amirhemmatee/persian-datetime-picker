@@ -444,8 +444,8 @@ class _DayHeaders extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final ColorScheme colorScheme = themeData.colorScheme;
-    final TextStyle textStyle =
-        themeData.textTheme.subtitle2!.apply(color: colorScheme.onSurface);
+    final TextStyle textStyle = themeData.textTheme.subtitle2!
+        .apply(color: colorScheme.onSurface, fontFamily: 'Vazir');
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
     final List<Widget> labels = _getDayHeaders(textStyle, localizations);
@@ -749,7 +749,7 @@ class _MonthItemState extends State<_MonthItem> {
         dayToBuild.isBefore(widget.firstDate);
 
     BoxDecoration? decoration;
-    TextStyle? itemStyle = textTheme.bodyText2;
+    TextStyle? itemStyle = textTheme.bodyText2?.copyWith(fontFamily: 'Vazir');
 
     final bool isRangeSelected =
         widget.selectedDateStart != null && widget.selectedDateEnd != null;
@@ -766,7 +766,8 @@ class _MonthItemState extends State<_MonthItem> {
     if (isSelectedDayStart || isSelectedDayEnd) {
       // The selected start and end dates gets a circle background
       // highlight, and a contrasting text color.
-      itemStyle = textTheme.bodyText2?.apply(color: colorScheme.onPrimary);
+      itemStyle = textTheme.bodyText2
+          ?.apply(color: colorScheme.onPrimary, fontFamily: 'Vazir');
       decoration = BoxDecoration(
         color: colorScheme.primary,
         shape: BoxShape.circle,
@@ -796,7 +797,8 @@ class _MonthItemState extends State<_MonthItem> {
     } else if (utils.isSameDay(widget.currentDate, dayToBuild)) {
       // The current day gets a different text color and a circle stroke
       // border.
-      itemStyle = textTheme.bodyText2?.apply(color: colorScheme.primary);
+      itemStyle = textTheme.bodyText2
+          ?.apply(color: colorScheme.primary, fontFamily: 'Vazir');
       decoration = BoxDecoration(
         border: Border.all(color: colorScheme.primary, width: 1),
         shape: BoxShape.circle,
@@ -826,7 +828,7 @@ class _MonthItemState extends State<_MonthItem> {
           label: semanticLabel,
           selected: isSelectedDayStart || isSelectedDayEnd,
           child: ExcludeSemantics(
-            child: Text(formatDecimal(day), style: itemStyle),
+            child: Text(formatDecimal(day), style: itemStyle?.copyWith(fontFamily: 'Vazir')),
           ),
         ),
       ),
@@ -944,7 +946,7 @@ class _MonthItemState extends State<_MonthItem> {
             child: Text(
               widget.displayedMonth.formatMonthYear(),
               style: textTheme.bodyText2!
-                  .apply(color: themeData.colorScheme.onSurface),
+                  .apply(color: themeData.colorScheme.onSurface,fontFamily: 'Vazir'),
             ),
           ),
         ),

@@ -102,14 +102,14 @@ class PDatePickerHeader extends StatelessWidget {
 
     final Text help = Text(
       helpText,
-      style: helpStyle,
+      style: helpStyle?.copyWith(fontFamily: 'Vazir'),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
     final Text title = Text(
       titleText,
       semanticsLabel: titleSemanticsLabel ?? titleText,
-      style: titleStyle,
+      style: titleStyle?.copyWith(fontFamily: 'Vazir'),
       maxLines: (isShort || orientation == Orientation.portrait) ? 1 : 2,
       overflow: TextOverflow.ellipsis,
     );
@@ -128,7 +128,7 @@ class PDatePickerHeader extends StatelessWidget {
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * .1,
-              color: Color.fromRGBO(88, 104, 224, 1),
+              color: Color.fromRGBO(227, 237, 247, 1),
               padding: const EdgeInsetsDirectional.only(
                 start: 24,
                 end: 12,

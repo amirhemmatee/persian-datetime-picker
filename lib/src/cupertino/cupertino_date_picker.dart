@@ -736,7 +736,8 @@ class _CupertinoDatePickerDateTimeState extends State<PCupertinoDatePicker> {
 
           return itemPositioningBuilder(
             context,
-            Text(dateText, style: _themeTextStyle(context)),
+            Text(dateText,
+                style: _themeTextStyle(context).copyWith(fontFamily: 'Vazir')),
           );
         },
       ),
@@ -824,7 +825,8 @@ class _CupertinoDatePickerDateTimeState extends State<PCupertinoDatePicker> {
                 semanticsLabel:
                     StringsText.datePickerHourSemanticsLabel(displayHour),
                 style: _themeTextStyle(context,
-                    isValid: _isValidHour(selectedAmPm, index)),
+                        isValid: _isValidHour(selectedAmPm, index))
+                    .copyWith(fontFamily: 'Vazir'),
               ),
             );
           },
@@ -878,7 +880,8 @@ class _CupertinoDatePickerDateTimeState extends State<PCupertinoDatePicker> {
               StringsText.datePickerMinute(minute),
               semanticsLabel:
                   StringsText.datePickerMinuteSemanticsLabel(minute),
-              style: _themeTextStyle(context, isValid: !isInvalidMinute),
+              style: _themeTextStyle(context, isValid: !isInvalidMinute)
+                  .copyWith(fontFamily: 'Vazir'),
             ),
           );
         }),
@@ -921,7 +924,8 @@ class _CupertinoDatePickerDateTimeState extends State<PCupertinoDatePicker> {
                   ? StringsText.anteMeridiemAbbreviation
                   : StringsText.postMeridiemAbbreviation,
               style: _themeTextStyle(context,
-                  isValid: _isValidHour(index, _selectedHourIndex)),
+                      isValid: _isValidHour(index, _selectedHourIndex))
+                  .copyWith(fontFamily: 'Vazir'),
             ),
           );
         }),
@@ -1228,7 +1232,8 @@ class _CupertinoDatePickerDateState extends State<PCupertinoDatePicker> {
             Text(
               StringsText.datePickerDayOfMonth(day),
               style:
-                  _themeTextStyle(context, isValid: day <= daysInCurrentMonth),
+                  _themeTextStyle(context, isValid: day <= daysInCurrentMonth)
+                      .copyWith(fontFamily: 'Vazir'),
             ),
           );
         }),
@@ -1279,7 +1284,8 @@ class _CupertinoDatePickerDateState extends State<PCupertinoDatePicker> {
             context,
             Text(
               StringsText.datePickerMonth(month),
-              style: _themeTextStyle(context, isValid: !isInvalidMonth),
+              style: _themeTextStyle(context, isValid: !isInvalidMonth)
+                  .copyWith(fontFamily: 'Vazir'),
             ),
           );
         }),
@@ -1331,7 +1337,8 @@ class _CupertinoDatePickerDateState extends State<PCupertinoDatePicker> {
             context,
             Text(
               StringsText.datePickerYear(year),
-              style: _themeTextStyle(context, isValid: isValidYear),
+              style: _themeTextStyle(context, isValid: isValidYear)
+                  .copyWith(fontFamily: 'Vazir'),
             ),
           );
         },
@@ -1774,9 +1781,9 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
             child: Text(
               text,
               style: const TextStyle(
-                fontSize: _kTimerPickerLabelFontSize,
-                fontWeight: FontWeight.w600,
-              ),
+                  fontSize: _kTimerPickerLabelFontSize,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Vazir'),
               maxLines: 1,
               softWrap: false,
             ),
@@ -1796,8 +1803,13 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
       child: Container(
         width: numberLabelWidth,
         alignment: AlignmentDirectional.centerEnd.resolve(textDirection),
-        child: Text(text,
-            softWrap: false, maxLines: 1, overflow: TextOverflow.visible),
+        child: Text(
+          text,
+          softWrap: false,
+          maxLines: 1,
+          overflow: TextOverflow.visible,
+          style: TextStyle(fontFamily: 'Vazir'),
+        ),
       ),
     );
   }

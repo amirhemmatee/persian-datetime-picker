@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: new Text(
             widget.title,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontFamily: 'Vazir'),
           ),
           centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -91,7 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       imageButton(
                         onTap: () async {
-                          Jalali pickedDate = await showModalBottomSheet<Jalali>(
+                          Jalali pickedDate =
+                              await showModalBottomSheet<Jalali>(
                             context: context,
                             builder: (context) {
                               Jalali tempPickedDate;
@@ -101,13 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: <Widget>[
                                     Container(
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
                                           CupertinoButton(
                                             child: Text(
                                               'لغو',
                                               style: TextStyle(
-                                                fontFamily: 'Dana',
+                                                fontFamily: 'Vazir',
                                               ),
                                             ),
                                             onPressed: () {
@@ -118,11 +120,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                             child: Text(
                                               'تایید',
                                               style: TextStyle(
-                                                fontFamily: 'Dana',
+                                                fontFamily: 'Vazir',
                                               ),
                                             ),
                                             onPressed: () {
-                                              Navigator.of(context).pop(tempPickedDate ?? Jalali.now());
+                                              Navigator.of(context).pop(
+                                                  tempPickedDate ??
+                                                      Jalali.now());
                                             },
                                           ),
                                         ],
@@ -137,12 +141,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: CupertinoTheme(
                                           data: CupertinoThemeData(
                                             textTheme: CupertinoTextThemeData(
-                                              dateTimePickerTextStyle: TextStyle(fontFamily: "Dana"),
+                                              dateTimePickerTextStyle:
+                                                  TextStyle(
+                                                      fontFamily: "Vazir"),
                                             ),
                                           ),
                                           child: PCupertinoDatePicker(
-                                            mode: PCupertinoDatePickerMode.dateAndTime,
-                                            onDateTimeChanged: (Jalali dateTime) {
+                                            mode: PCupertinoDatePickerMode
+                                                .dateAndTime,
+                                            onDateTimeChanged:
+                                                (Jalali dateTime) {
                                               tempPickedDate = dateTime;
                                             },
                                           ),
@@ -177,14 +185,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                           );
                           setState(() {
-                            if (picked != null) label = picked.persianFormat(context);
+                            if (picked != null)
+                              label = picked.persianFormat(context);
                           });
                         },
                         image: "09",
                       ),
                       imageButton(
                         onTap: () async {
-                          Jalali pickedDate = await showModalBottomSheet<Jalali>(
+                          Jalali pickedDate =
+                              await showModalBottomSheet<Jalali>(
                             context: context,
                             builder: (context) {
                               Jalali tempPickedDate;
@@ -194,13 +204,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: <Widget>[
                                     Container(
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
                                           CupertinoButton(
                                             child: Text(
                                               'لغو',
                                               style: TextStyle(
-                                                fontFamily: 'Dana',
+                                                fontFamily: 'Vazir',
                                               ),
                                             ),
                                             onPressed: () {
@@ -211,13 +222,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                             child: Text(
                                               'تایید',
                                               style: TextStyle(
-                                                fontFamily: 'Dana',
+                                                fontFamily: 'Vazir',
                                               ),
                                             ),
                                             onPressed: () {
                                               print(tempPickedDate);
 
-                                              Navigator.of(context).pop(tempPickedDate);
+                                              Navigator.of(context)
+                                                  .pop(tempPickedDate);
                                             },
                                           ),
                                         ],
@@ -232,12 +244,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: CupertinoTheme(
                                           data: CupertinoThemeData(
                                             textTheme: CupertinoTextThemeData(
-                                              dateTimePickerTextStyle: TextStyle(fontFamily: "Dana"),
+                                              dateTimePickerTextStyle:
+                                                  TextStyle(
+                                                      fontFamily: "Vazir"),
                                             ),
                                           ),
                                           child: PCupertinoDatePicker(
                                             mode: PCupertinoDatePickerMode.time,
-                                            onDateTimeChanged: (Jalali dateTime) {
+                                            onDateTimeChanged:
+                                                (Jalali dateTime) {
                                               tempPickedDate = dateTime;
                                             },
                                           ),
@@ -276,7 +291,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             lastDate: Jalali(1450, 9),
                           );
                           setState(() {
-                            label = "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
+                            label =
+                                "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
                           });
                         },
                         image: "03",
@@ -294,7 +310,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                           );
                           setState(() {
-                            if (picked != null) label = picked.persianFormat(context);
+                            if (picked != null)
+                              label = picked.persianFormat(context);
                           });
                         },
                         image: "04",
@@ -312,7 +329,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             lastDate: Jalali(1450, 9),
                           );
                           setState(() {
-                            label = "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
+                            label =
+                                "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
                           });
                         },
                         image: "06",
@@ -339,7 +357,10 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Text(
               label,
-              style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.black),
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5
+                  .copyWith(color: Colors.black, fontFamily: 'Vazir'),
               textAlign: TextAlign.center,
             ),
           ),

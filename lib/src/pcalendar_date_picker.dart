@@ -373,8 +373,7 @@ class _DatePickerModeToggleButtonState
                             widget.title,
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.subtitle2?.copyWith(
-                              color: controlColor,
-                            ),
+                                color: controlColor, fontFamily: 'Vazir'),
                           ),
                         ),
                         RotationTransition(
@@ -678,7 +677,8 @@ class _DayPicker extends StatelessWidget {
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final TextStyle? dayStyle = textTheme.caption;
+    final TextStyle? dayStyle =
+        textTheme.caption?.copyWith(fontFamily: 'Vazir');
     final Color enabledDayColor = colorScheme.onSurface.withOpacity(0.87);
     final Color disabledDayColor = colorScheme.onSurface.withOpacity(0.38);
     final Color selectedDayColor = Colors.white;
@@ -847,8 +847,7 @@ class _DayHeaders extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
     final TextStyle? dayHeaderStyle = theme.textTheme.caption?.apply(
-      color: colorScheme.onSurface.withOpacity(0.60),
-    );
+        color: colorScheme.onSurface.withOpacity(0.60), fontFamily: 'Vazir');
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
     final List<Widget> labels = _getDayHeaders(dayHeaderStyle, localizations);
@@ -963,12 +962,13 @@ class _YearPickerState extends State<_YearPicker> {
     } else {
       textColor = colorScheme.onSurface.withOpacity(0.87);
     }
-    final TextStyle? itemStyle = textTheme.bodyText1?.apply(color: textColor);
+    final TextStyle? itemStyle =
+        textTheme.bodyText1?.apply(color: textColor, fontFamily: 'Vazir');
 
     BoxDecoration? decoration;
     if (isSelected) {
       decoration = BoxDecoration(
-        color: colorScheme.primary,
+        color: Color.fromRGBO(88, 104, 224, 1),
         borderRadius: BorderRadius.circular(decorationHeight / 2),
         shape: BoxShape.rectangle,
       );

@@ -501,7 +501,8 @@ class _CalendarRangePickerDialog extends StatelessWidget {
               minWidth: 64,
               child: TextButton(
                 onPressed: onConfirm,
-                child: Text(confirmText, style: saveButtonStyle),
+                child: Text(confirmText,
+                    style: saveButtonStyle.copyWith(fontFamily: "Vazir")),
               ),
             ),
             const SizedBox(width: 8),
@@ -520,26 +521,28 @@ class _CalendarRangePickerDialog extends StatelessWidget {
                       Text(
                         helpText,
                         style: textTheme.overline!.apply(
-                          color: headerForeground,
-                        ),
+                            color: headerForeground, fontFamily: 'Vazir'),
                       ),
                       const SizedBox(height: 8),
                       Row(
                         children: <Widget>[
                           Text(
                             startDateText,
-                            style: startDateStyle,
+                            style:
+                                startDateStyle?.copyWith(fontFamily: 'Vazir'),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             ' – ',
-                            style: startDateStyle,
+                            style:
+                                startDateStyle?.copyWith(fontFamily: 'Vazir'),
                           ),
                           Flexible(
                             child: Text(
                               endDateText,
-                              style: endDateStyle,
+                              style:
+                                  endDateStyle?.copyWith(fontFamily: 'Vazir'),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -660,11 +663,17 @@ class _PInputDateRangePickerDialog extends StatelessWidget {
         spacing: 8,
         children: <Widget>[
           TextButton(
-            child: Text(cancelText),
+            child: Text(
+              cancelText,
+              style: TextStyle(fontFamily: 'Vazir'),
+            ),
             onPressed: onCancel,
           ),
           TextButton(
-            child: Text(confirmText),
+            child: Text(
+              confirmText,
+              style: TextStyle(fontFamily: 'Vazir'),
+            ),
             onPressed: onConfirm,
           ),
         ],

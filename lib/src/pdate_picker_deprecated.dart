@@ -154,7 +154,9 @@ class PDayPicker extends StatelessWidget {
     for (int i = firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       final String weekday = narrowWeekdays[i];
       result.add(ExcludeSemantics(
-        child: Center(child: Text(weekday, style: headerStyle)),
+        child: Center(
+            child: Text(weekday,
+                style: headerStyle?.copyWith(fontFamily: 'Vazir'))),
       ));
       if (i == (firstDayOfWeekIndex - 1) % 7) break;
     }
@@ -301,7 +303,8 @@ class PDayPicker extends StatelessWidget {
               selected: isSelectedDay,
               sortKey: OrdinalSortKey(day.toDouble()),
               child: ExcludeSemantics(
-                child: Text(formatDecimal(day), style: itemStyle),
+                child: Text(formatDecimal(day),
+                    style: itemStyle?.copyWith(fontFamily: 'Vazir')),
               ),
             ),
           ),
@@ -332,7 +335,8 @@ class PDayPicker extends StatelessWidget {
               child: ExcludeSemantics(
                 child: Text(
                   displayedMonth.formatMonthYear(),
-                  style: themeData.textTheme.subtitle1,
+                  style: themeData.textTheme.subtitle1
+                      ?.copyWith(fontFamily: 'Vazir'),
                 ),
               ),
             ),
@@ -513,8 +517,8 @@ class _MonthPickerState extends State<PMonthPicker>
     if (!_isDisplayingLastMonth) {
       SemanticsService.announce(
           _nextMonthDate.formatMonthYear(), textDirection);
-      _dayPickerController!.nextPage(
-          duration: _kMonthScrollDuration, curve: Curves.ease);
+      _dayPickerController!
+          .nextPage(duration: _kMonthScrollDuration, curve: Curves.ease);
     }
   }
 
@@ -522,8 +526,8 @@ class _MonthPickerState extends State<PMonthPicker>
     if (!_isDisplayingFirstMonth) {
       SemanticsService.announce(
           _previousMonthDate.formatMonthYear(), textDirection);
-      _dayPickerController!.previousPage(
-          duration: _kMonthScrollDuration, curve: Curves.ease);
+      _dayPickerController!
+          .previousPage(duration: _kMonthScrollDuration, curve: Curves.ease);
     }
   }
 
@@ -741,7 +745,8 @@ class _YearPickerState extends State<PYearPicker> {
           child: Center(
             child: Semantics(
               selected: isSelected,
-              child: Text(year.toString(), style: itemStyle),
+              child: Text(year.toString(),
+                  style: itemStyle?.copyWith(fontFamily: 'Vazir')),
             ),
           ),
         );
