@@ -423,7 +423,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     final Size dialogSize = _dialogSize(context)! * textScaleFactor;
     final DialogTheme dialogTheme = Theme.of(context).dialogTheme;
     return Dialog(
-      backgroundColor: Color.fromRGBO(227, 237, 247, 1),
+      backgroundColor: Color.fromARGB(255, 208, 15, 15),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: AnimatedContainer(
