@@ -421,11 +421,12 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     final Size dialogSize = _dialogSize(context)! * textScaleFactor;
     final DialogTheme dialogTheme = Theme.of(context).dialogTheme;
     return Dialog(
+      backgroundColor: Color.fromRGBO(227, 237, 247, 1),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: AnimatedContainer(
           width: dialogSize.width,
-          height: dialogSize.height,
+          height: MediaQuery.of(context).size.height * .3,
           duration: _dialogSizeAnimationDuration,
           curve: Curves.easeIn,
           child: MediaQuery(
@@ -472,9 +473,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
       // The default dialog shape is radius 2 rounded rect, but the spec has
       // been updated to 4, so we will use that here for the Date Picker, but
       // only if there isn't one provided in the theme.
-      shape: dialogTheme.shape ??
-          const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       clipBehavior: Clip.antiAlias,
     );
   }

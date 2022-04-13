@@ -274,7 +274,8 @@ class _CalendarDatePickerState extends State<PCalendarDatePicker> {
         // Put the mode toggle button on top so that it won't be covered up by the _MonthPicker
         _DatePickerModeToggleButton(
           mode: _mode,
-          title: '${_currentDisplayedMonthDate!.formatter.yyyy}',
+          title:
+              '${_currentDisplayedMonthDate!.formatter.yyyy} ${_currentDisplayedMonthDate!.formatter.mN}',
           onTitlePressed: () {
             // Toggle the day/year mode.
             _handleModeChanged(_mode == PDatePickerMode.day
@@ -577,11 +578,6 @@ class _MonthPickerState extends State<_MonthPicker> {
             child: Row(
               children: <Widget>[
                 const Spacer(),
-                Container(
-                  child: Text(_currentMonth!.formatter.mN),
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * .04),
-                ),
                 TextButton(
                   child: Text(
                     'ماه قبل',
