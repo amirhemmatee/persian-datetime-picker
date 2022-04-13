@@ -127,7 +127,7 @@ class PDatePickerHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height * .12,
+              height: MediaQuery.of(context).size.height * .1,
               color: Color.fromRGBO(88, 104, 224, 1),
               padding: const EdgeInsetsDirectional.only(
                 start: 24,
