@@ -33,7 +33,7 @@ class JalaliFormatter extends DateFormatter {
     'شنبه',
     'یکشنبه',
     'دوشنبه',
-    'سهشنبه',
+    'سه‌شنبه',
     'چهارشنبه',
     'پنجشنبه',
     'جمعه',
