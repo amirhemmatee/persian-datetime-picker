@@ -564,7 +564,7 @@ class _MonthPickerState extends State<_MonthPicker> {
   Widget build(BuildContext context) {
     final String previousTooltipText =
         'ماه بعد ${_previousMonthDate.formatMonthYear()}';
-    final String nextTooltipText = 'ماه ثبل ${_nextMonthDate.formatMonthYear}';
+    final String nextTooltipText = 'ماه قبل ${_nextMonthDate.formatMonthYear}';
     final Color controlColor =
         Theme.of(context).colorScheme.onSurface.withOpacity(0.60);
 
