@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 final ThemeData androidTheme = new ThemeData(
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -75,12 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       imageButton(
                         onTap: () async {
-                          Jalali picked = await showPersianDatePicker(
+                          Jalali? picked = await showPersianDatePicker(
                             context: context,
                             initialDate: Jalali.now(),
                             firstDate: Jalali(1385, 8),
                             lastDate: Jalali(1450, 9),
                           );
+                          // ignore: unrelated_type_equality_checks
                           if (picked != null && picked != selectedDate) {
                             setState(() {
                               label = picked.toJalaliDateTime();
@@ -91,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       imageButton(
                         onTap: () async {
-                          Jalali pickedDate =
+                          Jalali? pickedDate =
                               await showModalBottomSheet<Jalali>(
                             context: context,
                             builder: (context) {
-                              Jalali tempPickedDate;
+                              Jalali? tempPickedDate;
                               return Container(
                                 height: 250,
                                 child: Column(
@@ -125,8 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                             onPressed: () {
                                               Navigator.of(context).pop(
-                                                  tempPickedDate ??
-                                                      Jalali.now());
+                                                  tempPickedDate != null
+                                                      ? tempPickedDate!
+                                                      : Jalali.now());
                                             },
                                           ),
                                         ],
@@ -177,10 +179,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             context: context,
                             initialTime: TimeOfDay.now(),
                             initialEntryMode: PTimePickerEntryMode.input,
-                            builder: (BuildContext context, Widget child) {
+                            builder: (BuildContext context, Widget? child) {
                               return Directionality(
                                 textDirection: TextDirection.rtl,
-                                child: child,
+                                child: child!,
                               );
                             },
                           );
@@ -193,11 +195,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       imageButton(
                         onTap: () async {
-                          Jalali pickedDate =
+                          Jalali? pickedDate =
                               await showModalBottomSheet<Jalali>(
                             context: context,
                             builder: (context) {
-                              Jalali tempPickedDate;
+                              Jalali? tempPickedDate;
                               return Container(
                                 height: 250,
                                 child: Column(
@@ -292,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           );
                           setState(() {
                             label =
-                                "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
+                                "${picked?.start.toJalaliDateTime() ?? ""} ${picked?.end.toJalaliDateTime() ?? ""}";
                           });
                         },
                         image: "03",
@@ -302,10 +304,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           var picked = await showPersianTimePicker(
                             context: context,
                             initialTime: TimeOfDay.now(),
-                            builder: (BuildContext context, Widget child) {
+                            builder: (BuildContext context, Widget? child) {
                               return Directionality(
                                 textDirection: TextDirection.rtl,
-                                child: child,
+                                child: child!,
                               );
                             },
                           );
@@ -330,7 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           );
                           setState(() {
                             label =
-                                "${picked?.start?.toJalaliDateTime() ?? ""} ${picked?.end?.toJalaliDateTime() ?? ""}";
+                                "${picked?.start.toJalaliDateTime() ?? ""} ${picked?.end.toJalaliDateTime() ?? ""}";
                           });
                         },
                         image: "06",
@@ -360,7 +362,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context)
                   .textTheme
                   .headline5
-                  .copyWith(color: Colors.black, fontFamily: 'Vazir'),
+                  ?.copyWith(color: Colors.black, fontFamily: 'Vazir'),
               textAlign: TextAlign.center,
             ),
           ),
@@ -370,8 +372,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget imageButton({
-    Function onTap,
-    String image,
+    required VoidCallback onTap,
+    required String image,
   }) {
     return ScaleGesture(
       onTap: onTap,
@@ -403,16 +405,16 @@ class ScaleGesture extends StatefulWidget {
   final VoidCallback onTap;
 
   ScaleGesture({
-    this.child,
+    required this.child,
     this.scale = 1.1,
-    this.onTap,
+    required this.onTap,
   });
   @override
   _ScaleGestureState createState() => _ScaleGestureState();
 }
 
 class _ScaleGestureState extends State<ScaleGesture> {
-  double scale;
+  late double scale;
 
   @override
   void initState() {
@@ -437,7 +439,7 @@ class _ScaleGestureState extends State<ScaleGesture> {
         setState(() {
           scale = 1;
         });
-        widget?.onTap();
+        widget.onTap();
       },
       child: Transform.scale(
         scale: scale,

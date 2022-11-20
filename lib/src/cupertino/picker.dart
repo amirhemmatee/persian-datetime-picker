@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 
 /// Color of the 'magnifier' lens border.
 const Color _kHighlighterBorder = CupertinoDynamicColor.withBrightness(

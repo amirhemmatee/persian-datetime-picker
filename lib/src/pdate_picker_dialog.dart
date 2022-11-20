@@ -4,9 +4,8 @@
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:persian_datetime_picker/src/date/shamsi_date.dart';
 
 import 'pcalendar_date_picker.dart';
@@ -344,7 +343,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
       buttonTextTheme: ButtonTextTheme.primary,
       layoutBehavior: ButtonBarLayoutBehavior.constrained,
       children: <Widget>[
-        FlatButton(
+        TextButton(
           child: Text(
             widget.cancelText ?? "لغو",
             style: TextStyle(
@@ -352,7 +351,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
           ),
           onPressed: _handleCancel,
         ),
-        FlatButton(
+        TextButton(
           child: Text(widget.confirmText ?? "تایید",
               style: TextStyle(
                   fontFamily: 'Vazir', color: Color.fromRGBO(88, 104, 224, 1))),
